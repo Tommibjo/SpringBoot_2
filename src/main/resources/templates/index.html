@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+    <head>
+        <title>Todoapp</title>
+    </head>
+    <body>
+        <h1> TodoApplication</h1>
+        <p></p>
+        <h3>Task name</h3>
+        <p></p>
+        <h2>Add a task</h2>
+        <p></p>
+        <form th:action="@{/}" method="post">
+            Name: <input type="text" name="task"/> <input type="submit" value="Add!"/>
+        </form>
+
+    </body>
+</html>
