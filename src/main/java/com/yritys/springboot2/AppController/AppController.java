@@ -5,8 +5,14 @@
  */
 package com.yritys.springboot2.AppController;
 
+import com.yritys.springboot2.pojos.Task;
+import java.util.ArrayList;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 
 /**
  *
@@ -15,9 +21,28 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @Controller
 public class AppController {
 
+    private ArrayList<Task> tasks;
+
+    public AppController() {
+        this.tasks = new ArrayList<>();
+    }
+
     @RequestMapping("/")
-    public String home() {
+    public String home(Model model) {
+        model.addAttribute("tasks", this.tasks);
         return "index";
+    }
+
+    @RequestMapping(value = "/", method = RequestMethod.POST)
+    public String getForm(@RequestParam String task) {
+        this.tasks.add(new Task(task));
+        return "redirect:/";
+    }
+
+    @RequestMapping(value = "/{task}")
+    public String details(Model model, @PathVariable String task) {
+        model.addAttribute("task", task);
+        return "details";
     }
 
 }

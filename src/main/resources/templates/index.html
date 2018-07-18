@@ -12,6 +12,11 @@ and open the template in the editor.
         <h1> TodoApplication</h1>
         <p></p>
         <h3>Task name</h3>
+        <ul>
+            <li th:each="index : ${tasks}">
+                <a th:href="${index.task}"> <span th:text="${index.task}"/> </a>
+            </li>
+        </ul>
         <p></p>
         <h2>Add a task</h2>
         <p></p>
