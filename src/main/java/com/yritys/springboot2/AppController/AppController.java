@@ -39,6 +39,16 @@ public class AppController {
         return "redirect:/";
     }
 
+    @RequestMapping(value = "/", method = RequestMethod.DELETE)
+    public String removeTask(@PathVariable String task) {
+        for (Task index : this.tasks) {
+            if (task.equals(index.getTask())) {
+                this.tasks.remove(index);
+            }
+        }
+        return "redirect:/";
+    }
+
     @RequestMapping(value = "/{task}")
     public String details(Model model, @PathVariable String task) {
         for (Task index : this.tasks) {
@@ -50,5 +60,4 @@ public class AppController {
         model.addAttribute("task", task);
         return "details";
     }
-
 }
