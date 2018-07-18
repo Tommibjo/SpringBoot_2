@@ -12,9 +12,11 @@ package com.yritys.springboot2.pojos;
 public class Task {
 
     private String task;
+    private int views;
 
     public Task(String task) {
         this.task = task;
+        this.views = 0;
     }
 
     public String getTask() {
@@ -25,4 +27,11 @@ public class Task {
         this.task = task;
     }
 
+    public void increaseViews() {
+        this.views++;
+    }
+
+    public int getViews() {
+        return this.views;
+    }
 }

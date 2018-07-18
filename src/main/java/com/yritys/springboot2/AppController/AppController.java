@@ -41,6 +41,12 @@ public class AppController {
 
     @RequestMapping(value = "/{task}")
     public String details(Model model, @PathVariable String task) {
+        for (Task index : this.tasks) {
+            if (index.getTask().equals(task)) {
+                index.increaseViews();
+                model.addAttribute("views", index.getViews());
+            }
+        }
         model.addAttribute("task", task);
         return "details";
     }

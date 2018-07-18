@@ -10,7 +10,7 @@ and open the template in the editor.
     </head>
     <body>
         <h1 th:text="${task}"/>
-     <!--   Item has been checked total <span th:text=""/> times. -->
+        Item has been checked total <span th:text="${views}"/> times.
         <p></p>
         <a th:href="@{/}"><span>Back to listing.</span></a>
     </body>
